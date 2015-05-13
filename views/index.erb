@@ -1,0 +1,15 @@
+<% @article.each do |post| %>
+<div class="cadre">
+	<h1>Sujet: <%= post.sujet %></h1>
+		<h2 class="name">Nom: <%= post.name %></h2>
+		<div class="article"><%= post.message %></div>
+		<div class="date">posté le: <%= post.created_at %></div>
+</div>
+<% end %>
+
+<form action="/" method="post" accept-charset="utf-8">
+	<input type="text" name="articles[sujet]" placeholder="Sujet:">
+	<input type="text" name="articles[name]" placeholder="Nom:">
+	<textarea name="articles[message]" placeholder="Votre texte ici:"></textarea>
+	<input type="submit" value="Poster">
+</form>	
