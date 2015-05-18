@@ -1,10 +1,23 @@
-<% @article.each do |post| %>
-<div class="cadre">
-	<h1>Sujet: <%= post.sujet %></h1>
-		<h2 class="name">Nom: <%= post.name %></h2>
-		<div class="article"><%= post.message %></div>
-		<div class="date">posté le: <%= post.created_at %></div>
-</div>
+<% @article.reverse.each do |articles| %>
+	<div class="cadre">
+		<h1>Sujet: <%= articles.sujet %></h1>
+		<h2 class="name">Nom: <%= articles.name %></h2>
+		<div class="article"><%= articles.message %></div>
+		<div class="date">posté le: <%= articles.created_at %></div>
+		<div class="date">édité le: <%= articles.updated_at %></div>
+		<div class="supprimer">
+			<form action="/<%= articles.id %>" method= "post">
+				<input type="submit" value="Supprimer">
+				<input type="hidden" name="_method" value="delete">
+			</form>
+		</div>
+		<div class="editer">
+			<form action="/<%= articles.id %>" method= "get">
+				<input type="submit" value="Editer">
+				
+			</form>		
+		</div>
+	</div>
 <% end %>
 
 <form action="/" method="post" accept-charset="utf-8">

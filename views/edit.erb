@@ -1,0 +1,7 @@
+<form action="/<%= @article.id %>" method="post" accept-charset="utf-8">
+	<input type="text" name="articles[sujet]" value="<%= @article.sujet %>">
+	<input type="text" name="articles[name]" value="<%= @article.name %>">
+	<textarea name="articles[message]"><%= @article.message %></textarea>
+	<input type="submit" value="Editer">
+	<input type="hidden" name="_method" value="put">
+</form>	

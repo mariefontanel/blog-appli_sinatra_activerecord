@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
 end
 
 get '/' do 
-	@article = Article.order("created_at ASC")
+	@article = Article.all()
 	@title = "Article"	
 	erb :index
 end
@@ -20,6 +20,24 @@ end
 post '/' do
 	@article = Article.new(params[:articles])
 	@article.save
+	redirect '/'
+end
+
+delete '/:id' do
+	@article = Article.find(params[:id])
+	@article.destroy
+	redirect '/'
+end
+
+get '/:id' do
+	@article = Article.find(params[:id])
+	@article.save
+	erb :edit
+end
+
+put '/:id' do
+	@article = Article.find(params[:id])
+	@article.update_attributes(params[:articles])
 	redirect '/'
 end
 
